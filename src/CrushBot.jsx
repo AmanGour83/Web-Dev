@@ -138,11 +138,7 @@ export default function CrushBot() {
         throw new Error(data.error || "Request failed");
       }
 
-      const text = (data.content || [])
-        .map((b) => (b.type === "text" ? b.text : ""))
-        .join("")
-        .trim()
-        .replace(/^["']|["']$/g, "");
+      const text = (data.text || "").trim().replace(/^["']|["']$/g, "");
 
       const finalLine = text || "Couldn't think of one... you're that speechless-inducing 😳";
       setLine(finalLine);
