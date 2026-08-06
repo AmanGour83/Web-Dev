@@ -58,13 +58,6 @@ GEMINI_API_KEY=your_key_here
 
 Deployed on Vercel, connected directly to this GitHub repo. `GEMINI_API_KEY` is set as an environment variable in the Vercel project settings (Settings → Environment Variables) — the key never lives in the codebase.
 
-## Judging criteria alignment
-
-- **Functionality:** live AI generation on every click, not a static list
-- **UI/UX:** glassmorphic, GenZ-styled interface with a holographic card-flip signature moment
-- **Creativity:** vibe selector + no-repeat memory + copy-to-clipboard flow
-- **Responsiveness:** mobile-first layout, scales cleanly to desktop
-- **Code quality:** clean component structure, API key never exposed client-side
 
 ---
 
