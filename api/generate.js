@@ -28,10 +28,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           contents: [{ parts: [{ text: prompt }] }],
           generationConfig: {
-            maxOutputTokens: 500,
-            thinkingConfig: {
-              thinkingBudget: 0,
-            },
+            maxOutputTokens: 2048,
           },
         }),
       }
@@ -46,6 +43,11 @@ export default async function handler(req, res) {
     }
 
     const text = data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || "";
+    const finishReason = data?.candidates?.[0]?.finishReason;
+
+    if (!text && finishReason === "MAX_TOKENS") {
+      return res.status(502).json({ error: "Response got cut off — try again" });
+    }
 
     if (!text) {
       return res.status(502).json({ error: "Empty response from Gemini" });
