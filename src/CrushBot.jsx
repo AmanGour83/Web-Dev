@@ -157,7 +157,11 @@ export default function CrushBot() {
       spawnParticles(vibe.glow);
     } catch (e) {
       setError(true);
-      setLine("Signal's down. Even AI needs a second to process how much rizz you have.");
+      setLine(
+        e.message && e.message !== "Failed to fetch"
+          ? `Error: ${e.message}`
+          : "Signal's down. Even AI needs a second to process how much rizz you have."
+      );
       setFlipped(true);
     } finally {
       setLoading(false);
